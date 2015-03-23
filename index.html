@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC 
+	"-//W3C//DTD XHTML 1.0 Transitional //EN"
+	"DTD/xhtml1-transitional.dtd">
+
+<!-- TouXiangXiaoZhan_main_page.html -->
+
+<html xmlns = "http://www.w3.com/xhtml" xml:lang="zh-cmn-Hans" lang = "zh-cmn-Hans">
+<head>
+	<meta http-equiv= "Content-type" content = "text/html; charset=utf-8"/>
+	<title>欢迎来到头像小站</title>
+	<style>
+	*{margin:0 auto;padding:0 auto;}
+	a{
+		text-decoration:none;
+	}
+	a:hover{
+		text-decoration:underline;
+	}
+	body{
+		font-family: Arial, sans-serif; 
+		font-size: 11p;
+	}
+	.boxs{
+		border:1px solid #eee;
+		margin:100px auto;
+		width:400px;
+		height:200px;
+		padding:20px 20px;
+	}
+	.reg{
+		float:right;
+	}
+	.usn{
+		float: left;font-size:16px;
+	}
+	ul{
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	ul li{
+		padding:0;
+		margin:10px;
+	}
+	.sub{
+		text-align:center;
+		margin-top:40px;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="boxs">
+		<div style = "font-size: 26px; font-weight: bold;margin-bottom:10px;">
+			欢迎来到头像小站 O(∩_∩)O 
+		</div>
+		
+		<div class="reg">
+			<a href="register.html" class="xi2">没有帐号?<span style="color:black;">立即注册</span></a>
+		</div><br>
+		<div>
+		<form method= "post" action = "cgi_bin/login.py" enctype="multipart/form-data">
+			<ul>
+				<li>
+					<select name = "loginname" class="usn" width="35">
+						<option >用户名</option>
+						<option selected>Email</option>
+						<option>UID</option>
+					</select>
+					&emsp;<input type = "text" name = "username" size="30"/>
+				</li>
+				<li>
+					<span>密&emsp;&nbsp;码:</span>
+					&emsp;&emsp;<input type= "password" id = "passwd_LW1NA" name = "password" size = "30" />
+				
+				</li>
+				<li class="sub">
+					<input type = "submit" value = "登&emsp;录" style="width:80px;height:40px;">
+				</li>
+			</ul>
+		</form>
+		</div>
+	</div>
+<body>
+</html>
