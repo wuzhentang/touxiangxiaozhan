@@ -89,35 +89,13 @@
 				
 ####2.1.2.2 安装mysql-python依赖
 		
-获取源码包：		
+如果未安装pip，则先安装：
 
-    wget http://ncu.dl.sourceforge.net/project/mysql-python/mysql-python-test/1.2.4b4/MySQL-python-1.2.4b4.tar.gz
-			
-解压并进入解压目录	
-		
+    easy_install pip
+接着用pip安装mysql-python
 
-	tar xvzf MySQL-python-1.2.4b4.tar.gz 
-	cd MySQL-python-1.2.4b4
-找到mysql_config的位置	
-			
-    find / -name mysql_config 
-如果系统不存在mysql_config文件：
-				
+    python -m pip install mysql-python
 
-    apt-get install libmysqld-dev	
-配置site.cfg文件中mysql_config的路径
-				
-    #mysql_config = /usr/local/mysql/bin/mysql_config 这一行前的#去掉，并且把mysql_config的路径设为mysql_config的路径。
-				
-编译mysql-python依赖：
-				
-    python setup.py build
-如果出现：Python.h: No such file or directory，安装python-dev：
-
-    apt-get install python-dev
-   安装mysql-python依赖
-
-    python setup.py install
 		
 ###2.1.3 站点代码获取及目录说明
 		
