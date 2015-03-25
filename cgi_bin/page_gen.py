@@ -1,33 +1,39 @@
 #! /usr/bin/env python
 # coding:utf-8
 
+"""
+This module is use for generate page of user informations.
+"""
 import sys
 
 
-__all__=["print_page_beg","print_page_end","print_user_info_page","print_test_page","print_error_page"]
+__all__ = ["print_page_beg", "print_page_end", \
+    "print_user_info_page", "print_test_page", "print_error_page"]
 
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+reload(sys).setdefaultencoding('utf8')
 
 def print_page_beg(title):
-	print "Content-type: text/html"
-	print
-	print """
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang = "zh-cmn-Hans" lang = "zh-cmn-Hans">
+    """"print html conent and title message. """
+    print "Content-type: text/html"
+    print
+    print """
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang = "zh-cmn-Hans" lang = "zh-cmn-Hans">
 	<head>
-	    <meta http-equiv = "Content-type" content = "text/html; charset = utf-8" />"""
-	print "<title>%s</title>" %title
+	<meta http-equiv = "Content-type" content = "text/html; charset = utf-8" />"""
+    print "<title>%s</title>" % title
 	
 
 def print_page_end():
-	print """
+    """print the html tag of page end"""
+    print """
 		</body>
 	</html>"""
 
 
-def print_user_info_page(username,uid,email,image_name,register_time):
-	print """
+def print_user_info_page(username, uid, email, image_name, register_time):
+    """use for print user informations."""
+    print """
 	<style>
 	*{margin:0 auto;padding:0 auto;}
 	a{
@@ -104,45 +110,40 @@ def print_user_info_page(username,uid,email,image_name,register_time):
 	}
 	</style>
 	</head>
-	<body>
-	"""
-	print """
-		<a href="/index.html" class="logout">退出</a><br/>
-	"""
-		
-	print """
-	<div class="boxs">
-		<div style="background-color:#E5E5E5;width:100%;text-align:center;font-size:30px;">用户信息</div>
-		<form method="post" action="update_user_info.py" name="register_info" enctype="multipart/form-data" onsubmit="return is_modify();">
-		<ul>
-			
-	"""
-	print """ <input type = "hidden" value = %s name="uid">""" %uid
-	print "<li><label>用户名:</label><label>%s</label></li>" %username
-	print "<li><label>UID:</label><label>%s</label></li>" %uid
-	print "<li><label>Email:</label><label>%s</label></li>" %email
-	print "<li><label>注册时间:</label>%s</li>" %register_time
-	print """<li class="submit-input" style='float:right;'><input type="submit" value="提交修改" style="width:80px;height:30px;"/></li>"""
-	print "</ul>"
+	<body>"""
 	
-	print """<div class="image_filepath">"""
-	
-	print """	<div class="imgs" id="preview"><img src="/pic/%s"/></div>""" %image_name
-	
-	print """	
-				<a onClick="updateImg();" style="cursor:pointer;display:block;margin-top:10px;height:30px;width:80px;border:1px solid #eee;background-color:#e5e5e5;text-align:center;line-height:30px;">修改头像</a>
-				<div style="display:none;"><input type="file" name="image" id="fileName" width="5" style="" value='修改头像' onchange="handleFiles(this.files)"/></div>
+    print """<a href="/index.html" class="logout">退出</a><br/>"""
+    print """<div class="boxs">
+		    <div style="background-color:#E5E5E5;width:100%;text-align:center;font-size:30px;">用户信息</div>
+            <form method="post" action="update_user_info.py" name="register_info" 
+                enctype="multipart/form-data" onsubmit="return is_modify();">"""
+    print """<ul>"""
+    print """ <input type = "hidden" value = %s name="uid">""" % uid
+    print "<li><label>用户名:</label><label>%s</label></li>" % username
+    print "<li><label>UID:</label><label>%s</label></li>" % uid
+    print "<li><label>Email:</label><label>%s</label></li>" % email
+    print "<li><label>注册时间:</label>%s</li>" % register_time
+    print """<li class="submit-input" style='float:right;'>
+	        <input type="submit" value="提交修改" 
+			    style="width:80px;height:30px;"/></li>"""
+    
+    print "</ul>"
+    print """<div class="image_filepath">"""
+
+    print """	<div class="imgs" id="preview">
+	            <img src="/pic/%s"/></div>""" % image_name
+
+    print """
+	    <a onClick="updateImg();" style="cursor:pointer;display:block;margin-top:10px;height:30px;width:80px;border:1px solid #eee;background-color:#e5e5e5;text-align:center;line-height:30px;">修改头像</a>
+		<div style="display:none;"><input type="file" name="image" id="fileName" width="5" style="" value='修改头像' onchange="handleFiles(this.files)"/></div>
 				
 			</div>
 		</form>
-	</div>
-	""" 
-	
-	print """<div id="filecontent"></div>"""
-	
-	
-	print """
-	<script type="text/javascript">
+	</div>""" 
+
+    print """<div id="filecontent"></div>"""
+
+    print """<script type="text/javascript">
 		function handleFiles(files){
 			for (var i = 0; i < files.length; i++) {
 				var file = files[i];
@@ -190,10 +191,9 @@ def print_user_info_page(username,uid,email,image_name,register_time):
 	"""
 
 
-	
-
-def print_error_page(error_message,go_back_url):
-	print """
+def print_error_page(error_message, go_back_url):
+    """print error message in page"""
+    print """
 	<style>
 		*{margin:0 auto;padding:0 auto;}
 		.boxs{
@@ -204,7 +204,14 @@ def print_error_page(error_message,go_back_url):
 			padding:20px 20px;
 	}
 	.go-back{
-		display:block;border:1px solid #eee;background-color:#ccc;height:40px;width:80px;font-size:30px;line-height:40px;text-align:center;
+		display:block;
+		border:1px solid #eee;
+		background-color:#ccc;
+		height:40px;
+		width:80px;
+		font-size:30px;
+		line-height:40px;
+		text-align:center;
 		text-decoration:none;
 		color:black;
 		margin-top:70px;
@@ -215,24 +222,21 @@ def print_error_page(error_message,go_back_url):
 	<div class="boxs">"""
 	
 	
-	print """
-		<div style = "font-size: 26px; font-weight: bold;margin-bottom:10px;text-align:center;">
-		%s
-		</div>""" %error_message
-		
-	print """
-		<a href=%s class="go-back">返回</a>
-	</div>
-	""" %go_back_url
+    print """<div style = "font-size: 26px; font-weight: bold;
+	        margin-bottom:10px;text-align:center;">%s</div>""" % error_message
+    print """<a href=%s class="go-back">返回</a>
+	</div>""" % go_back_url
 	
 
 def print_test_page(test_messge):
-	print_page_beg("test_page")
-	print """
+    """use for print test page"""
+    print_page_beg("test_page")
+    print """
 		</head>
 		<body>
-		<div style = "font-size: 26px; font-weight: bold;margin-bottom:10px;">%s</div>""" %test_messge
-	print_page_end()
+		    <div style = "font-size: 26px; font-weight: bold;
+			    margin-bottom:10px;">%s</div>""" % test_messge
+    print_page_end()
 	
 	
 	
